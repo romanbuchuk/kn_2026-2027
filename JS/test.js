@@ -16,4 +16,4 @@ name = 56;
 console.log(typeof name);
 name = function () {};
 console.log(typeof name);
-// name = [1, 'sd', true];
+name = [1, 'sd', true];
