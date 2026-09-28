@@ -28,4 +28,24 @@ export default defineConfig([
       ],
     },
   },
+  {
+    files: ['cypress/**/*.{js,jsx}', 'src/**/*.cy.{js,jsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.mocha,
+        cy: true,
+        Cypress: true,
+      },
+    },
+    rules: {
+      'unicorn/prevent-abbreviations': 'off',
+    },
+  },
+  {
+    files: ['vite.config.js', 'cypress.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ]);

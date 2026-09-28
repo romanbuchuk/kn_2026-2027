@@ -1,0 +1,11 @@
+{
+  "all": true,
+  "include": ["src/**/*.{js,jsx}"],
+  "exclude": ["src/**/*.cy.{js,jsx}", "src/main.jsx", "src/assets/**"],
+  "reporter": ["text", "html", "lcov"],
+  "check-coverage": true,
+  "branches": 80,
+  "lines": 80,
+  "functions": 80,
+  "statements": 80
+}
