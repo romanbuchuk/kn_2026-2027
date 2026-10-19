@@ -1,0 +1,21 @@
+.item {
+  background: #f0eeee;
+  height: 150px;
+  max-width: 350px;
+  min-width: 250px;
+  width: 30%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #fff;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
+    cursor: pointer;
+  }
+}
+
+.active {
+  color: red;
+}

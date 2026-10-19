@@ -12,7 +12,7 @@
     "prepare": "husky",
     "cy:open:component": "cypress open --component",
     "cy:open:e2e": "cypress open --e2e",
-    "test:component": "cypress run --component",
+    "test:component": "cypress run --component --browser chrome",
     "test:e2e": "start-server-and-test dev http://localhost:5173 \"cypress run --e2e\"",
     "test": "npm run coverage:clean && npm run test:component && npm run test:e2e",
     "coverage:clean": "rm -rf .nyc_output coverage",
@@ -20,6 +20,8 @@
     "coverage:check": "nyc check-coverage"
   },
   "dependencies": {
+    "axios": "^1.20.0",
+    "classnames": "^2.5.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },

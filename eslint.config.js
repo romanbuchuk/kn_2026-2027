@@ -24,7 +24,7 @@ export default defineConfig([
     rules: {
       'unicorn/filename-case': [
         'error',
-        { cases: { kebabCase: true, pascalCase: true } },
+        { cases: { camelCase: true, pascalCase: true } },
       ],
     },
   },
