@@ -4,12 +4,12 @@ const useFetchUsers = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('https://dummyjson.com/users')
+    fetch('http://localhost:3000/users')
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        setUsers(data.users);
+        setUsers(data);
       })
       .catch((error) => console.error(error));
   }, []);
