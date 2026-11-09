@@ -10,14 +10,16 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 const dummyServerUrl = 'https://dummyjson.com';
 
 // (request, response, next) {}
-app.get('/api/users', (req, res) => {
-  fetch(`${dummyServerUrl}/users`)
-    .then((response) => response.json())
-    .then((data) => res.send(data.users))
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send('Error fetching users');
-    });
+app.get('/api/users', async (req, res) => {
+  try {
+    const response = await fetch(`${dummyServerUrl}/users`);
+    const data = await response.json();
+
+    res.send(data.users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching users');
+  }
 });
 
 app.post('/api/users', (req, res) => {
