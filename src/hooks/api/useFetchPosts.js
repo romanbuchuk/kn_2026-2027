@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-const useFetchUsers = () => {
+const useFetchPosts = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/users')
+    fetch('http://localhost:3000/api/posts')
       .then((response) => {
         return response.json();
       })
@@ -16,4 +16,4 @@ const useFetchUsers = () => {
 
   return users;
 };
-export default useFetchUsers;
+export default useFetchPosts;

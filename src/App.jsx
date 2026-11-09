@@ -1,11 +1,13 @@
 import List from './components/List';
-import useFetchUsers from './hooks/api/useFetchUsers.js';
+import useFetchPosts from '@hooks/api/useFetchPosts.js';
 import SelectedItem from '@components/SelectedItem';
 import { useState } from 'react';
+import useCreatePost from '@hooks/api/useCreatePost.js';
 
 function App() {
-  const items = useFetchUsers();
+  const items = useFetchPosts();
   const [selectedItem, setSelectedItem] = useState();
+  const createUser = useCreatePost();
 
   const handleItemClick = (id) => {
     setSelectedItem(items[id]);
@@ -18,7 +20,9 @@ function App() {
       <List items={items} onClick={handleItemClick} />
 
       <div>
-        <button>Add new item</button>
+        <button onClick={() => createUser({ title: 'New Post', userId: 5 })}>
+          Add new item
+        </button>
       </div>
     </div>
   );
