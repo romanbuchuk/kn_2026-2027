@@ -1,28 +1,32 @@
 const express = require('express');
+const path = require('node:path');
 const app = express();
-const users = require('./constants/users');
+
 const cors = require('cors');
 
 app.use(cors());
-app.use('/users', (req, res, next) => {
-  console.log('==== OUR CUSTOM MIDDLEWARE ======');
-  req.customName = 'CUSTOM NAME';
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
-  next();
-});
+const dummyServerUrl = 'https://dummyjson.com';
 
 // (request, response, next) {}
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get('/api/users', (req, res) => {
+  fetch(`${dummyServerUrl}/users`)
+    .then((response) => response.json())
+    .then((data) => res.send(data.users))
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error fetching users');
+    });
 });
-app.get('/users', (req, res) => {
-  console.log(req.customName);
-  res.send(users);
-});
 
-app.post('/users', (req, res) => {
+app.post('/api/users', (req, res) => {
   res.send('Hello Post Request Users!');
+});
+
+app.get(/.*/, (req, res) => {
+  const indexFile = path.join(__dirname, '..', 'dist', 'index.html');
+  res.sendFile(indexFile);
 });
 
 module.exports = app;
