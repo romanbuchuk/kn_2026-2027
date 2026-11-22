@@ -1,29 +1,26 @@
-import List from './components/List';
-import useFetchPosts from '@hooks/api/useFetchPosts.js';
-import SelectedItem from '@components/SelectedItem';
-import { useState } from 'react';
-import useCreatePost from '@hooks/api/useCreatePost.js';
+import { RouterProvider } from 'react-router/dom';
+import { createBrowserRouter } from 'react-router';
+
+import Posts from '@pages/Posts/Posts.jsx';
+import Main from '@pages/Main';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Main />,
+  },
+  {
+    path: '/posts',
+    element: <Posts />,
+  },
+]);
 
 function App() {
-  const items = useFetchPosts();
-  const [selectedItem, setSelectedItem] = useState();
-  const createUser = useCreatePost();
-
-  const handleItemClick = (id) => {
-    setSelectedItem(items[id]);
-    console.log(items);
-  };
-
   return (
     <div>
-      <SelectedItem item={selectedItem} />
-      <List items={items} onClick={handleItemClick} />
-
-      <div>
-        <button onClick={() => createUser({ title: 'New Post', userId: 5 })}>
-          Add new item
-        </button>
-      </div>
+      {/*<SelectedItem item={selectedItem} />*/}
+      {/* Posts */}
+      <RouterProvider router={router} />
     </div>
   );
 }
